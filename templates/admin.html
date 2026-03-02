@@ -33,7 +33,10 @@
         <section class="table-card">
             <div class="table-head">
                 <h2>100 lượt gần nhất</h2>
-                <button id="btn_reload">Tải lại</button>
+                <div class="table-actions">
+                    <button id="btn_reload">Tải lại</button>
+                    <button id="btn_logout" class="btn-logout">Đăng xuất</button>
+                </div>
             </div>
 
             <div class="table-wrap">
@@ -54,10 +57,6 @@
             </div>
         </section>
     </main>
-
-    <script>
-        window.ADMIN_KEY = "{{ key }}";
-    </script>
     <script src="/static/admin.js"></script>
 </body>
 </html>

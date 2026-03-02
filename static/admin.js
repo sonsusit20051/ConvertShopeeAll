@@ -4,6 +4,7 @@ const sumFailed = document.getElementById("sum_failed");
 const sumToday = document.getElementById("sum_today");
 const historyBody = document.getElementById("history_body");
 const btnReload = document.getElementById("btn_reload");
+const btnLogout = document.getElementById("btn_logout");
 
 function escHtml(text) {
     if (text === null || text === undefined) {
@@ -25,7 +26,11 @@ async function loadStats() {
     btnReload.disabled = true;
     btnReload.textContent = "Đang tải...";
     try {
-        const resp = await fetch(`/api/admin/stats?key=${encodeURIComponent(window.ADMIN_KEY)}`);
+        const resp = await fetch("/api/admin/stats");
+        if (resp.status === 401) {
+            window.location.href = "/admin/login";
+            return;
+        }
         const data = await resp.json();
         if (!resp.ok || !data.success) {
             throw new Error(data.detail || "Không tải được dữ liệu admin.");
@@ -59,5 +64,16 @@ async function loadStats() {
     }
 }
 
+async function logout() {
+    btnLogout.disabled = true;
+    btnLogout.textContent = "Đang thoát...";
+    try {
+        await fetch("/api/admin/logout", { method: "POST" });
+    } finally {
+        window.location.href = "/admin/login";
+    }
+}
+
 btnReload.addEventListener("click", loadStats);
+btnLogout.addEventListener("click", logout);
 loadStats();

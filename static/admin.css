@@ -85,6 +85,12 @@ h1 {
     font-size: 20px;
 }
 
+.table-actions {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
 .table-head button {
     border: 1px solid #ced6ef;
     background: #eef2ff;
@@ -93,6 +99,12 @@ h1 {
     padding: 8px 12px;
     cursor: pointer;
     font-weight: 700;
+}
+
+.table-head .btn-logout {
+    border-color: #ebc7cb;
+    background: #fff2f3;
+    color: #9f2e31;
 }
 
 .table-wrap {
