@@ -1,0 +1,38 @@
+{
+  "manifest_version": 3,
+  "name": "shopee cv all",
+  "description": "Nhận job convert từ queue server và trả affiliate link.",
+  "version": "0.1.0",
+  "permissions": ["storage", "alarms", "tabs"],
+  "host_permissions": [
+    "http://localhost:8790/*",
+    "http://127.0.0.1:8790/*",
+    "http://localhost:8787/*",
+    "http://127.0.0.1:8787/*",
+    "https://*.trycloudflare.com/*",
+    "https://yt.shpee.cc/*",
+    "https://shp.today/*",
+    "https://affiliate.shopee.vn/*",
+    "https://s.shopee.vn/*",
+    "https://shopee.vn/*",
+    "https://*.shopee.vn/*",
+    "https://shope.ee/*",
+    "https://*.shp.ee/*"
+  ],
+  "background": {
+    "service_worker": "background.js",
+    "type": "module"
+  },
+  "options_page": "options.html",
+  "action": {
+    "default_title": "shopee cv all",
+    "default_popup": "popup.html"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://affiliate.shopee.vn/*"],
+      "js": ["content.js"],
+      "run_at": "document_idle"
+    }
+  ]
+}

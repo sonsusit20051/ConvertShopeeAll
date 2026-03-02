@@ -1,52 +1,98 @@
 <!doctype html>
 <html lang="vi">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Convert Link Shopee</title>
-    <link rel="stylesheet" href="/static/app.css" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Convert Link Shopee</title>
+  <link rel="stylesheet" href="/static/app.css?v={{ asset_version }}" />
 </head>
-<body>
-    <main class="page-wrap">
-        <section class="card">
-            <header class="card-header">
-                <h1>Convert link Shopee có mã toàn sàn</h1>
-                <div class="badge">Chỉ 1 link/lần</div>
-            </header>
+<body
+  data-default-affiliate-id-fb="{{ default_affiliate_id_fb }}"
+  data-default-sub-id-fb="{{ default_sub_id_fb }}"
+  data-default-affiliate-id-yt="{{ default_affiliate_id_yt }}"
+  data-default-sub-id-yt="{{ default_sub_id_yt }}"
+>
+  <main class="page">
+    <section class="shell">
+      <header class="hero">
+        <h1>Convert Link Shopee</h1>
+        <span class="badge">Chỉ 1 link/lần</span>
+      </header>
 
-            <div class="divider"></div>
+      <section class="mode-grid" aria-label="Chọn nguồn chuyển đổi">
+        <button id="modeFb" type="button" class="mode-card is-active" data-source="fb">
+          <span class="mode-icon mode-icon-fb">
+            <img src="/static/facebook_logo.webp" alt="Facebook" />
+          </span>
+          <span class="mode-text">Đổi mã Facebook</span>
+        </button>
+        <button id="modeYt" type="button" class="mode-card" data-source="yt">
+          <span class="mode-icon mode-icon-yt">
+            <img src="/static/youtube_logo.png" alt="Youtube" />
+          </span>
+          <span class="mode-text">Đổi mã Youtube</span>
+        </button>
+      </section>
 
-            <section class="panel">
-                <label class="label" for="input_url">Nhập link Shopee</label>
-                <input
-                    id="input_url"
-                    type="url"
-                    placeholder="https://s.shopee.vn/..."
-                    autocomplete="off"
-                />
+      <section class="panel">
+        <label for="inp" class="label">Nhập link Shopee</label>
+        <div class="input-wrap">
+          <input
+            id="inp"
+            class="input"
+            placeholder="Dán link tại đây"
+            autocomplete="off"
+            autocapitalize="off"
+            autocorrect="off"
+            spellcheck="false"
+          />
+          <button id="btnPaste" type="button" class="paste-btn" aria-label="Dán sản phẩm" title="Dán sản phẩm">📋</button>
+        </div>
 
-                <div class="actions">
-                    <button id="btn_paste" class="btn btn-ghost" type="button">Dán sản phẩm</button>
-                    <button id="btn_convert" class="btn btn-primary" type="button">Nhận voucher</button>
-                    <button id="btn_copy" class="btn btn-ghost" type="button">Sao chép</button>
-                    <button id="btn_open" class="btn btn-ghost" type="button">Mở</button>
-                </div>
+        <div class="btnrow">
+          <button id="btnConvert" type="button" class="btn btn-primary">Nhận voucher</button>
+          <button id="btnCopy" type="button" class="btn" disabled>Sao chép</button>
+          <button id="btnOpen" type="button" class="btn btn-buy" disabled>Mua ngay</button>
+        </div>
 
-                <div class="result-box">
-                    <p class="result-title">Kết quả</p>
-                    <p id="result_link" class="result-link">Chưa có link kết quả.</p>
-                </div>
+        <div id="resultWrap" class="result" aria-live="polite">
+          <div class="result-title">Kết quả</div>
+          <span id="resultPreview" class="result-link">Kết quả sẽ hiển thị ở đây...</span>
+        </div>
 
-                <p id="status_text" class="status-text">Sẵn sàng convert link.</p>
-            </section>
+        <section id="productCard" class="product-card hidden" aria-live="polite">
+          <h3>Thông tin sản phẩm</h3>
+          <div class="product-main">
+            <img id="productImage" class="product-image" alt="Ảnh sản phẩm" />
+            <div class="product-body">
+              <p id="productName" class="product-name"></p>
+              <p id="productShop" class="product-shop"></p>
+              <p id="productPrice" class="product-price"></p>
+            </div>
+          </div>
+          <div class="product-meta">
+            <div class="meta-box">Đã bán <b id="productSold">-</b></div>
+            <div class="meta-box">Đánh giá <b id="productRating">-</b> ★</div>
+          </div>
         </section>
-    </main>
 
-    <script>
-        window.APP_CONFIG = {
-            affiliateId: "{{ affiliate_id }}"
-        };
-    </script>
-    <script src="/static/app.js"></script>
+        <p id="status" class="status"></p>
+      </section>
+    </section>
+  </main>
+
+  <div class="signature">
+    <span>product by <b>Sơn moi</b></span>
+    <span class="contact" aria-label="Liên hệ">
+      <a class="contact-link" href="https://www.facebook.com/sonmoi24.09" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+        <img src="https://sonsusit20051.github.io/ConvertSP/2023_Facebook_icon.svg.webp" alt="Facebook" />
+      </a>
+      <a class="contact-link" href="https://zalo.me/0353025356" target="_blank" rel="noopener noreferrer" aria-label="Zalo">
+        <img src="https://sonsusit20051.github.io/ConvertSP/Icon_of_Zalo.svg.webp" alt="Zalo" />
+      </a>
+    </span>
+  </div>
+
+  <script src="/static/app.js?v={{ asset_version }}"></script>
 </body>
 </html>

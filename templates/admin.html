@@ -9,7 +9,7 @@
 <body>
     <main class="admin-wrap">
         <h1>Admin Dashboard</h1>
-        <p class="sub">Lịch sử convert và thống kê hệ thống.</p>
+        <p class="sub">Lịch sử convert, tách rõ nguồn FB và YT/Shopee.</p>
 
         <section class="summary-grid">
             <article class="summary-card">
@@ -30,6 +30,23 @@
             </article>
         </section>
 
+        <section class="source-grid">
+            <article class="source-card fb">
+                <h2>Nguồn Facebook</h2>
+                <p>Tổng: <b id="fb_total">0</b></p>
+                <p>Thành công: <b id="fb_success">0</b></p>
+                <p>Thất bại: <b id="fb_failed">0</b></p>
+                <p>Hôm nay: <b id="fb_today">0</b></p>
+            </article>
+            <article class="source-card yt">
+                <h2>Nguồn YT/Shopee</h2>
+                <p>Tổng: <b id="yt_total">0</b></p>
+                <p>Thành công: <b id="yt_success">0</b></p>
+                <p>Thất bại: <b id="yt_failed">0</b></p>
+                <p>Hôm nay: <b id="yt_today">0</b></p>
+            </article>
+        </section>
+
         <section class="table-card">
             <div class="table-head">
                 <h2>100 lượt gần nhất</h2>
@@ -45,9 +62,10 @@
                         <tr>
                             <th>ID</th>
                             <th>Thời gian</th>
+                            <th>Nguồn</th>
                             <th>Input</th>
-                            <th>Resolved</th>
-                            <th>Affiliate Link</th>
+                            <th>Output</th>
+                            <th>IP</th>
                             <th>Kết quả</th>
                             <th>Lỗi</th>
                         </tr>
