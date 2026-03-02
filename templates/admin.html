@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin - Shopee Converter</title>
+    <link rel="stylesheet" href="/static/admin.css" />
+</head>
+<body>
+    <main class="admin-wrap">
+        <h1>Admin Dashboard</h1>
+        <p class="sub">Lịch sử convert và thống kê hệ thống.</p>
+
+        <section class="summary-grid">
+            <article class="summary-card">
+                <p class="k">Tổng lượt convert</p>
+                <p id="sum_total" class="v">0</p>
+            </article>
+            <article class="summary-card">
+                <p class="k">Thành công</p>
+                <p id="sum_success" class="v success">0</p>
+            </article>
+            <article class="summary-card">
+                <p class="k">Thất bại</p>
+                <p id="sum_failed" class="v fail">0</p>
+            </article>
+            <article class="summary-card">
+                <p class="k">Hôm nay</p>
+                <p id="sum_today" class="v">0</p>
+            </article>
+        </section>
+
+        <section class="table-card">
+            <div class="table-head">
+                <h2>100 lượt gần nhất</h2>
+                <button id="btn_reload">Tải lại</button>
+            </div>
+
+            <div class="table-wrap">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Thời gian</th>
+                            <th>Input</th>
+                            <th>Resolved</th>
+                            <th>Affiliate Link</th>
+                            <th>Kết quả</th>
+                            <th>Lỗi</th>
+                        </tr>
+                    </thead>
+                    <tbody id="history_body"></tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        window.ADMIN_KEY = "{{ key }}";
+    </script>
+    <script src="/static/admin.js"></script>
+</body>
+</html>

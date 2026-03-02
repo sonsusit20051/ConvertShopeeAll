@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Convert Link Shopee</title>
+    <link rel="stylesheet" href="/static/app.css" />
+</head>
+<body>
+    <main class="page-wrap">
+        <section class="card">
+            <header class="card-header">
+                <h1>Convert link Shopee có mã toàn sàn</h1>
+                <div class="badge">Chỉ 1 link/lần</div>
+            </header>
+
+            <div class="divider"></div>
+
+            <section class="panel">
+                <label class="label" for="input_url">Nhập link Shopee</label>
+                <input
+                    id="input_url"
+                    type="url"
+                    placeholder="https://s.shopee.vn/..."
+                    autocomplete="off"
+                />
+
+                <div class="actions">
+                    <button id="btn_paste" class="btn btn-ghost" type="button">Dán sản phẩm</button>
+                    <button id="btn_convert" class="btn btn-primary" type="button">Nhận voucher</button>
+                    <button id="btn_copy" class="btn btn-ghost" type="button">Sao chép</button>
+                    <button id="btn_open" class="btn btn-ghost" type="button">Mở</button>
+                </div>
+
+                <div class="result-box">
+                    <p class="result-title">Kết quả</p>
+                    <p id="result_link" class="result-link">Chưa có link kết quả.</p>
+                </div>
+
+                <p id="status_text" class="status-text">Sẵn sàng convert link.</p>
+            </section>
+        </section>
+    </main>
+
+    <script>
+        window.APP_CONFIG = {
+            affiliateId: "{{ affiliate_id }}"
+        };
+    </script>
+    <script src="/static/app.js"></script>
+</body>
+</html>

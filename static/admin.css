@@ -1,0 +1,140 @@
+:root {
+    --bg: #f3f4f8;
+    --card: #ffffff;
+    --line: #d9deec;
+    --text: #16254a;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: "SF Pro Display", "Segoe UI", sans-serif;
+}
+
+.admin-wrap {
+    width: min(1500px, 96vw);
+    margin: 20px auto;
+}
+
+h1 {
+    margin: 0;
+    font-size: 34px;
+}
+
+.sub {
+    margin: 8px 0 18px;
+    color: #5f6d8f;
+}
+
+.summary-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 14px;
+}
+
+.summary-card {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: 14px;
+}
+
+.summary-card .k {
+    margin: 0;
+    color: #61719a;
+    font-size: 14px;
+}
+
+.summary-card .v {
+    margin: 8px 0 0;
+    font-size: 34px;
+    font-weight: 800;
+}
+
+.summary-card .success {
+    color: #0f7a34;
+}
+
+.summary-card .fail {
+    color: #af2e31;
+}
+
+.table-card {
+    margin-top: 16px;
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    overflow: hidden;
+}
+
+.table-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 14px;
+    border-bottom: 1px solid var(--line);
+}
+
+.table-head h2 {
+    margin: 0;
+    font-size: 20px;
+}
+
+.table-head button {
+    border: 1px solid #ced6ef;
+    background: #eef2ff;
+    color: #1a2d57;
+    border-radius: 10px;
+    padding: 8px 12px;
+    cursor: pointer;
+    font-weight: 700;
+}
+
+.table-wrap {
+    overflow: auto;
+    max-height: 70vh;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 1300px;
+}
+
+th,
+td {
+    text-align: left;
+    border-bottom: 1px solid #edf1fb;
+    padding: 10px 12px;
+    vertical-align: top;
+    font-size: 13px;
+}
+
+th {
+    position: sticky;
+    top: 0;
+    background: #f8f9fd;
+    z-index: 1;
+}
+
+.ok {
+    color: #148438;
+    font-weight: 700;
+}
+
+.bad {
+    color: #b33436;
+    font-weight: 700;
+}
+
+.ellipsis {
+    max-width: 320px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
