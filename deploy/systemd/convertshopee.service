@@ -1,0 +1,20 @@
+[Unit]
+Description=ConvertShopee FastAPI Service
+After=network.target
+
+[Service]
+Type=simple
+User=__APP_USER__
+Group=__APP_GROUP__
+WorkingDirectory=__APP_DIR__
+EnvironmentFile=__APP_DIR__/.env
+ExecStart=__APP_DIR__/.venv/bin/uvicorn main:app --host 127.0.0.1 --port __APP_PORT__ --workers 2
+Restart=always
+RestartSec=3
+KillSignal=SIGINT
+TimeoutStopSec=30
+StandardOutput=append:/var/log/convertshopee/app.log
+StandardError=append:/var/log/convertshopee/app.err.log
+
+[Install]
+WantedBy=multi-user.target

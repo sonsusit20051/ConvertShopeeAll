@@ -72,6 +72,58 @@ chrome://extensions -> Developer mode -> Load unpacked -> chọn thư mục exte
 - User: `http://localhost:8790/`
 - Admin login: `http://localhost:8790/admin/login`
 
+## Deploy VPS (Ubuntu 22.04/24.04)
+
+### 1) Chuẩn bị
+
+- Trỏ DNS `A record` của domain về IP VPS.
+- Mở firewall cho `80` và `443`.
+- SSH vào VPS bằng user có quyền `sudo`.
+
+### 2) Cài đặt 1 lần bằng script
+
+```bash
+git clone https://github.com/sonsusit20051/ConvertShopeeAll.git
+cd ConvertShopeeAll
+sudo DOMAIN=convert.yourdomain.com \
+  ADMIN_KEY='doi-mat-khau-admin-ngay' \
+  WORKER_TOKEN='doi-worker-token-ngay' \
+  bash deploy/scripts/setup_ubuntu.sh
+```
+
+Script sẽ tự:
+
+- Cài `python/nginx/certbot`
+- Clone app vào `/opt/convertshopee`
+- Tạo virtualenv + cài dependencies
+- Tạo `systemd` service `convertshopee`
+- Cấu hình `nginx` reverse proxy
+
+### 3) Bật HTTPS
+
+```bash
+sudo certbot --nginx -d convert.yourdomain.com
+```
+
+Sau đó truy cập:
+
+- User: `https://convert.yourdomain.com/`
+- Admin: `https://convert.yourdomain.com/admin/login`
+
+### 4) Cập nhật app khi có code mới
+
+```bash
+sudo APP_DIR=/opt/convertshopee APP_USER=convertshopee bash /opt/convertshopee/deploy/scripts/update_app.sh
+```
+
+### 5) Lệnh quản trị nhanh
+
+```bash
+sudo systemctl status convertshopee
+sudo journalctl -u convertshopee -f
+sudo nginx -t
+```
+
 ## API nhanh
 
 ### Sync convert
